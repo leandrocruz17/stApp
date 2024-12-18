@@ -1,10 +1,10 @@
 import streamlit as st
 
-st.title("🎈 My new app")
+st.title("FIRENZE - Registro de Entradas e Saídas")
 st.write(
-    "Let's start building! For help and inspiration, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
+    "Registre uma foto do comprovante de Entrega ou Recebimento."
 )
-enable = st.checkbox("Enable camera")
-picture = st.camera_input("Take a picture", disabled=not enable)
+enable = st.checkbox("Habilitar Camera")
+picture = st.camera_input("Registre uma foto", disabled=not enable)
 if picture:
     st.image(picture)
