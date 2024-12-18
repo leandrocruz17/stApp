@@ -7,15 +7,7 @@ st.title("FIRENZE - Registro de Entradas e Saídas")
 st.write(
     "Registre uma foto do comprovante de Entrega ou Recebimento."
 )
-# Função para criar submenus 
-def criar_submenu(titulo, opcoes, icones): 
-    return option_menu( 
-        titulo, 
-        opcoes, 
-        icons=icones, 
-        menu_icon="cast", 
-        default_index=0, 
-    )
+
 # Menu lateral
 with st.sidebar:
     selected = option_menu(
