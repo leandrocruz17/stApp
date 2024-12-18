@@ -22,3 +22,4 @@ if picture:
     formatted_now = now.strftime("%d/%m/%Y %H:%M:%S") 
     # Exibe a data e hora no Streamlit 
     st.write(f"Registro de {option}: {partner} efetuado em {formatted_now}!")
+    
