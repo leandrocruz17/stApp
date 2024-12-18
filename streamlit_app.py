@@ -1,4 +1,5 @@
 import streamlit as st
+from streamlit_option_menu import option_menu
 
 # Configurações da página 
 st.set_page_config(page_title="FIRENZE")
@@ -6,6 +7,16 @@ st.title("FIRENZE - Registro de Entradas e Saídas")
 st.write(
     "Registre uma foto do comprovante de Entrega ou Recebimento."
 )
+
+# Menu lateral
+with st.sidebar:
+    selected = option_menu(
+        "Menu",
+        ["Cadastros", "Suprimentos", "Vendas", "Finanças", "RH"],
+        icons=["person", "box", "cart", "currency-dollar", "people"],
+        menu_icon="cast",
+        default_index=0,
+    )
 # Opção de entrega ou recebimento 
 option = st.selectbox("Selecione a operação:", ["Entrega", "Recebimento"]) 
 # Campo de texto para informar o parceiro 
@@ -25,4 +36,4 @@ if picture:
     # Exibe a data e hora no Streamlit 
     st.write(f"Registro de {option}: {partner.upper()} efetuado em {formatted_now}!")
 
-st.write("Desenvolvido por [Leandro Cruz](https://github.com/leandrocruz17)")
+st.write("Desenvolvido por [@Leandro Cruz](https://github.com/leandrocruz17)")
