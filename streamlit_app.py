@@ -23,4 +23,4 @@ if picture:
     # Exibe a data e hora no Streamlit 
     st.write(f"Registro de {option}: {partner} efetuado em {formatted_now}!")
 
-st.write("Desenvolvido por [Leandro Cruz](https://github.com/leandrocruz)")
+st.write("Desenvolvido por [Leandro Cruz](https://github.com/leandrocruz17)")
