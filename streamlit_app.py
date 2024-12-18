@@ -7,4 +7,5 @@ st.write(
 enable = st.checkbox("Habilitar Camera")
 picture = st.camera_input("Registre uma foto", disabled=not enable)
 if picture:
-    st.image(picture)
+    #st.image(picture)
+    st.write(f"Registro efetuado em {now()}!")
