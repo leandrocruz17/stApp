@@ -9,9 +9,12 @@ picture = st.camera_input("Registre uma foto", disabled=not enable)
 if picture:
     #st.image(picture)
     from datetime import datetime 
-    # Captura a data e hora atual 
-    now = datetime.now() 
+    import pytz
+    # Define o fuso horário para -3:00 (Brasília) 
+    timezone = pytz.timezone('America/Sao_Paulo')
+    # Captura a data e hora atual no fuso horário especificado 
+    now = datetime.now(timezone) 
     # Formata a data e hora 
     formatted_now = now.strftime("%d/%m/%Y %H:%M:%S") 
-    # # Exibe a data e hora no Streamlit 
+    # Exibe a data e hora no Streamlit 
     st.write(f"Registro efetuado em {formatted_now}!")
