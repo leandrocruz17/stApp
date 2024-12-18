@@ -7,7 +7,15 @@ st.title("FIRENZE - Registro de Entradas e Saídas")
 st.write(
     "Registre uma foto do comprovante de Entrega ou Recebimento."
 )
-
+# Função para criar submenus 
+def criar_submenu(titulo, opcoes, icones): 
+    return option_menu( 
+        titulo, 
+        opcoes, 
+        icons=icones, 
+        menu_icon="cast", 
+        default_index=0, 
+    )
 # Menu lateral
 with st.sidebar:
     selected = option_menu(
@@ -17,6 +25,23 @@ with st.sidebar:
         menu_icon="cast",
         default_index=0,
     )
+
+# Incluir CSS para criar o submenu ao passar o mouse 
+st.markdown(""" <style> /* Esconder inicialmente os submenus */ 
+            nav[data-testid="stSidebarNav"] 
+            ul div:nth-child(2) > ul { display: none; } 
+            /* Mostrar o submenu ao passar o mouse */ 
+            nav[data-testid="stSidebarNav"] 
+            ul div:nth-child(2):hover > ul 
+            { display: block; position: absolute; 
+            left: 250px; top: 0; background: white; 
+            width: 200px; border: 1px solid #ccc; z-index: 1000; } 
+            nav[data-testid="stSidebarNav"] ul div:nth-child(2) > ul > li 
+            { padding: 10px; list-style: none; } </style> """, 
+            unsafe_allow_html=True) 
+# Adicionar submenus manualmente 
+if selected == "Cadastros": 
+    submenu = st.sidebar.radio( "Cadastros", ["Parceiros", "Produtos", "Vendedores"] )
 # Opção de entrega ou recebimento 
 option = st.selectbox("Selecione a operação:", ["Entrega", "Recebimento"]) 
 # Campo de texto para informar o parceiro 
