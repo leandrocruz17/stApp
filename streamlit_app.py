@@ -1,5 +1,7 @@
 import streamlit as st
 
+# Configurações da página 
+st.set_page_config(page_title="FIRENZE")
 st.title("FIRENZE - Registro de Entradas e Saídas")
 st.write(
     "Registre uma foto do comprovante de Entrega ou Recebimento."
