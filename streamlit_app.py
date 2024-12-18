@@ -18,22 +18,41 @@ with st.sidebar:
         default_index=0,
     )
 
-# Incluir CSS para criar o submenu ao passar o mouse 
-st.markdown(""" <style> /* Esconder inicialmente os submenus */ 
+# Adicionar o CSS para criar o submenu em cascata 
+st.markdown(""" 
+            <style> /* Esconder inicialmente os submenus */ 
             nav[data-testid="stSidebarNav"] 
             ul div:nth-child(2) > ul { display: none; } 
             /* Mostrar o submenu ao passar o mouse */ 
             nav[data-testid="stSidebarNav"] 
-            ul div:nth-child(2):hover > ul 
-            { display: block; position: absolute; 
+            ul div:nth-child(2):hover > ul { 
+            display: block; position: absolute; 
             left: 250px; top: 0; background: white; 
-            width: 200px; border: 1px solid #ccc; z-index: 1000; } 
-            nav[data-testid="stSidebarNav"] ul div:nth-child(2) > ul > li 
-            { padding: 10px; list-style: none; } </style> """, 
+            width: 200px; border: 1px solid #ccc; 
+            z-index: 1000; } 
+            nav[data-testid="stSidebarNav"] 
+            ul div:nth-child(2) > ul > li { 
+            padding: 10px; list-style: none; } 
+            /* CSS para permitir a execução do submenu em cascata */ 
+            nav[data-testid="stSidebarNav"] 
+            ul div:nth-child(2) 
+            { position: relative; } </style> """, 
             unsafe_allow_html=True) 
-# Adicionar submenus manualmente 
-if selected == "Cadastros": 
-    submenu = st.sidebar.radio( "Cadastros", ["Parceiros", "Produtos", "Vendedores"] )
+# Adicionar submenus manualmente dentro da seção de menu principal 
+with st.sidebar: 
+    if selected == "Cadastros": 
+        submenu_option = option_menu( 
+            "Cadastros", [
+                "Parceiros", 
+                "Produtos", 
+                "Vendedores"
+            ], 
+            icons=["people", "box", "person"], 
+            menu_icon="cast", 
+            default_index=0, 
+            key="submenu" 
+        )
+        
 # Opção de entrega ou recebimento 
 option = st.selectbox("Selecione a operação:", ["Entrega", "Recebimento"]) 
 # Campo de texto para informar o parceiro 
